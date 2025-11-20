@@ -2,6 +2,7 @@ package com.example.project_vidal_romain.service;
 
 import com.example.project_vidal_romain.DTO.Request.CompteDTO;
 import com.example.project_vidal_romain.entity.Compte;
+import com.example.project_vidal_romain.entity.CompteType;
 import com.example.project_vidal_romain.repository.CompteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -79,7 +80,7 @@ public class CompteServiceImpl implements ICompteService {
         }
 
         var compte = compteOptional.get();
-        if (compte.getMoney() - money < -1000) {
+        if (compte.getCompteType() == CompteType.COURANT && compte.getMoney() - money < -1000) {
             return Optional.empty();
         }
 
