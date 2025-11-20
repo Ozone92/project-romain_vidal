@@ -1,4 +1,4 @@
-package com.example.project_vidal_romain.DTO;
+package com.example.project_vidal_romain.DTO.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.project_vidal_romain.DTO;
+package com.example.project_vidal_romain.DTO.Request;
 
 import com.example.project_vidal_romain.entity.CompteType;
 

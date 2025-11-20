@@ -1,12 +1,11 @@
 package com.example.project_vidal_romain.controller;
 
+import com.example.project_vidal_romain.DTO.Request.CompteDTO;
 import com.example.project_vidal_romain.entity.Compte;
 import com.example.project_vidal_romain.service.ICompteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +27,17 @@ public class CompteController {
             return ResponseEntity.ok(compte.get());
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Compte> addCompte(@RequestBody CompteDTO compteDTO) {
+        var compte = compteService.createCompte(compteDTO);
+
+        if (compte.isPresent()) {
+            return ResponseEntity.ok(compte.get());
+        } else {
+            return ResponseEntity.badRequest().build();
         }
     }
 }

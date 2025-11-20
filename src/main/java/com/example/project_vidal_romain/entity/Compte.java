@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class Compte {
     private Long id;
 
     private Float money;
-    private Date openDate;
+    private LocalDate openDate;
     private CompteType compteType;
 
     @OneToOne
