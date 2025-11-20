@@ -35,6 +35,12 @@ public class CompteServiceImpl implements ICompteService {
         }
 
         var client = clientOptional.get();
+
+        if (client.getComptes().stream().anyMatch(compte -> compte.getCompteType() == compteDTO.type())) {
+            //Client already have a account of this type
+            return Optional.empty();
+        }
+
         var compte = new Compte();
 
         compte.setClient(client);
@@ -50,13 +56,35 @@ public class CompteServiceImpl implements ICompteService {
         if (money < 0) {
             return Optional.empty();
         }
-       var compte = compteRepository.findById(id);
-       if (compte.isEmpty()) {
+       var compteOptional = compteRepository.findById(id);
+       if (compteOptional.isEmpty()) {
            return Optional.empty();
        }
 
-       compte.get().setMoney(compte.get().getMoney() + money);
+       var compte = compteOptional.get();
 
-       return compte;
+       compte.setMoney(compte.getMoney() + money);
+
+       return Optional.of(compte);
+    }
+
+    @Override
+    public Optional<Compte> withdrawMoney(Long id, Float money) {
+        if (money < 0) {
+            return Optional.empty();
+        }
+        var compteOptional = compteRepository.findById(id);
+        if (compteOptional.isEmpty()) {
+            return Optional.empty();
+        }
+
+        var compte = compteOptional.get();
+        if (compte.getMoney() - money < -1000) {
+            return Optional.empty();
+        }
+
+        compte.setMoney(compte.getMoney() - money);
+
+        return Optional.of(compte);
     }
 }

@@ -12,4 +12,5 @@ public interface ICompteService {
 
     Optional<Compte> createCompte(CompteDTO compteDTO);
     Optional<Compte> addMoney(Long id, Float money);
+    Optional<Compte> withdrawMoney(Long id, Float money);
 }
