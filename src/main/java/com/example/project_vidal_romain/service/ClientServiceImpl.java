@@ -46,4 +46,14 @@ public class ClientServiceImpl implements IClientService {
 
         return Optional.of(client);
     }
+
+    @Override
+    public Optional<Client> deleteClientById(Long id) {
+        var client = clientRepository.findById(id);
+        if (client.isPresent()) {
+            clientRepository.delete(client.get());
+        }
+
+        return client;
+    }
 }

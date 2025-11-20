@@ -43,4 +43,15 @@ public class ClientController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @DeleteMapping("client/{id}")
+    public ResponseEntity<ClientResponseDTO> deleteClientById(@PathVariable Long id) {
+        Optional<Client> client = service.deleteClientById(id);
+
+        if (client.isPresent()){
+            return ResponseEntity.ok(Converters.toDTO(client.get()));
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

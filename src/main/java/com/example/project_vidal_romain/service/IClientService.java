@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IClientService {
-    public List<Client> findAll();
-    public Optional<Client> findById(Long id);
+    List<Client> findAll();
+    Optional<Client> findById(Long id);
     Optional<Client> createClient(ClientDTO clientDTO);
+    Optional<Client> deleteClientById(Long id);
 }
