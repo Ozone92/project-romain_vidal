@@ -9,5 +9,4 @@ public class ProjectVidalRomainApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProjectVidalRomainApplication.class, args);
     }
-
 }
