@@ -8,7 +8,7 @@
         <version>3.5.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>fr.epita</groupId>
     <artifactId>project_vidal_romain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>project_vidal_romain</name>
